@@ -1,4 +1,5 @@
 import Task from "./Task.js";
+import Storage from "./Storage";
 
 export default class Project {
     constructor(name) {
@@ -14,7 +15,7 @@ export default class Project {
         // Check if a name has been given
         if (newTask.getName() === undefined) {
             // if not, set default name
-            newTask.setName(this.currentDefaultName());
+            newTask.setName(this.getDefaultTaskName());
         }
         this.tasks.push(newTask);
     }
@@ -22,14 +23,46 @@ export default class Project {
         this.tasks = this.tasks.filter((task) => task.name !== taskName);
     }
 
-    currentDefaultName() {
+    setName(newProjectName) {
+        this.name = newProjectName;
+    }
+    getName() {
+        return this.name;
+    }
+
+    setTasks(newTasks) {
+        this.tasks = newTasks;
+    }
+    getTasks() {
+        return this.tasks;
+    }
+
+    getTask(x) {
+        if (typeof x === "string") {
+            console.log("getting task by string");
+            return this.tasks.find((task) => task.getName() === x);
+        } else if (typeof x === "number") {
+            console.log("getting task by number");
+            if (x > -1) {
+                return this.tasks[x];
+            }
+        } else if (typeof x === "object") {
+            if (x instanceof Task) {
+                return this.tasks.find((task) => task === x);
+            }
+        }
+
+        return;
+    }
+
+    getDefaultTaskName() {
         let count = 1;
         for (let i = 0; i < this.tasks.length; i++) {
-            if (this.tasks[i].name === `Project${count}`) {
+            if (this.tasks[i].getName() === `Task${count}`) {
                 count++;
                 i = -1;
             }
         }
-        return `Project${count}`;
+        return `Task${count}`;
     }
 }

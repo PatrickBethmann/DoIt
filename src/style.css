@@ -78,14 +78,49 @@ body {
     height: 30px;
 }
 .content {
+    min-height: 50%;
+    min-width: 50%;
+    width: calc(100vw - 200px);
+    height: auto;
     position: absolute;
     left: 200px;
     top: 100px;
-    height: fit-content;
-    width: fit-content;
 
-    min-height: 50%;
-    min-width: 50%;
+    padding: 100px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: flex-start;
+    align-items: center;
 
     background-color: aliceblue;
+}
+.task {
+    background-color: white;
+    width: 60%;
+    height: 40px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.task-name {
+    flex: 1;
+    max-width: 86%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.edit-button,
+.remove-button,
+.completed-button {
+    height: 100%;
+    aspect-ratio: 1;
+    border: none;
+    cursor: pointer;
+}
+
+.completed-button {
+    background: none;
 }

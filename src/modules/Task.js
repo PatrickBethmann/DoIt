@@ -12,13 +12,18 @@ export default class Task {
     getName() {
         return this.name;
     }
+
     setDescription(newDescription) {
-        this.description = this.description;
+        this.description = newDescription;
     }
     getDescription() {
         return this.description;
     }
+
     setDueDate(newDueDate) {
         this.dueDate = newDueDate;
+    }
+    getDueDate() {
+        return this.dueDate;
     }
 }
