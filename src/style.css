@@ -1,6 +1,91 @@
-*,
-*::after,
-*::before {
+:root {
+}
+
+* {
     margin: 0;
     padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+body {
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: lightskyblue;
+    color: white;
+}
+
+.nav {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    top: 100px;
+    background-color: rgb(173, 224, 255);
+
+    width: 200px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 20px;
+    padding: 20px;
+}
+.default-projects {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: stretch;
+    gap: 40px;
+}
+.default-projects-button {
+    padding: 5px 10px;
+    text-align: left;
+    height: 30px;
+    border: none;
+    background-color: white;
+}
+.projects-title {
+    margin-top: 20px;
+}
+
+.projects-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    text-align: center;
+    height: 30px;
+}
+.project-button {
+    padding: 5px 10px;
+    text-align: left;
+    height: 30px;
+    border: none;
+    background-color: white;
+}
+.add-project-button {
+    background-color: skyblue;
+    height: 30px;
+}
+.content {
+    position: absolute;
+    left: 200px;
+    top: 100px;
+    height: fit-content;
+    width: fit-content;
+
+    min-height: 50%;
+    min-width: 50%;
+
+    background-color: aliceblue;
 }
