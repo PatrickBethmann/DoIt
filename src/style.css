@@ -103,11 +103,15 @@ body {
     padding: 5px;
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     gap: 5px;
 }
 .task-name {
+    /* Positioning */
     flex: 1;
-    max-width: 86%;
+    margin-right: auto;
+
+    /* Design */
     text-overflow: ellipsis;
     overflow: hidden;
 }

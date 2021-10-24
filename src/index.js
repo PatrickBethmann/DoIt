@@ -6,6 +6,7 @@ import Project from "./modules/Project";
 
 document.addEventListener("DOMContentLoaded", UI.loadHomepage);
 
+// Testing
 const todolist1 = new TodoList();
 
 const project1 = todolist1.getProject(0);

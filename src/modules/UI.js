@@ -13,6 +13,9 @@ export default class UI {
     }
 
     static displayProject(project) {
+        // Reset
+        this.content.innerHTML = "";
+
         // Checks if a project was passed
         if (!(project instanceof Project)) {
             return;
@@ -22,7 +25,7 @@ export default class UI {
             // Creating container
             const task = document.createElement("div");
             task.classList.add("task");
-
+            task.setAttribute("data-TaskIndex", project.getTasks().indexOf(currentTask));
             // Creating completed-button
             const completedButton = document.createElement("button");
             completedButton.classList.add("completed-button");
@@ -41,11 +44,16 @@ export default class UI {
             editButton.textContent = "O";
             editButton.classList.add("edit-button");
             task.appendChild(editButton);
+
             // Remove Button
             const removeButton = document.createElement("button");
             removeButton.textContent = "X";
             removeButton.classList.add("remove-button");
             task.appendChild(removeButton);
+            removeButton.addEventListener("click", () => {
+                project.removeTask(parseInt(task.getAttribute("data-TaskIndex")));
+                UI.displayProject(project);
+            });
 
             // Appending to Content div
             this.content.appendChild(task);

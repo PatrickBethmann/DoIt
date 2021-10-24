@@ -19,8 +19,28 @@ export default class Project {
         }
         this.tasks.push(newTask);
     }
-    removeTask(taskName) {
-        this.tasks = this.tasks.filter((task) => task.name !== taskName);
+
+    /**
+     *
+     * @param {*} x Number/String/Task
+     * @returns NEw tasks Array
+     */
+    removeTask(x) {
+        console.log("task removed");
+        console.log(typeof x);
+
+        if (typeof x === "string") {
+            this.tasks = this.tasks.filter((task) => task.getName() !== x);
+        } else if (typeof x === "number") {
+            console.log("removed by number");
+            this.tasks.splice(x, 1);
+        } else if (typeof x === "object") {
+            if (x instanceof Task) {
+                this.tasks = this.tasks.filter((task) => task !== x);
+            }
+        }
+
+        return this.tasks;
     }
 
     setName(newProjectName) {
