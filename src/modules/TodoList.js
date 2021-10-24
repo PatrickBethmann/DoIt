@@ -24,7 +24,15 @@ export default class TodoList {
 
         this.projects.push(newProject);
     }
-    removeProject() {}
+    removeProject(x) {
+        if (typeof x === "string") {
+            this.projects = this.projects.filter((project) => project.getName() !== x);
+        } else if (typeof x === "number") {
+            this.projects.splice(x, 1);
+        } else if (typeof x === "object" || x instanceof Project) {
+            this.projects = this.projects.filter((project) => project !== x);
+        }
+    }
 
     setProjects(newProjects) {
         this.projects = newProjects;
@@ -35,16 +43,14 @@ export default class TodoList {
 
     getProject(x) {
         if (typeof x === "string") {
-            console.log("getting project by string");
-            return this.projects.find((prject) => project.getName() === x);
+            return this.projects.find((project) => project.getName() === x);
         } else if (typeof x === "number") {
-            console.log("getting project by number");
             if (x > -1) {
                 return this.projects[x];
             }
         } else if (typeof x === "object") {
             if (x instanceof Project) {
-                return this.projects.find((project) => project === x);
+                return this.projects.find((project) => project.getName() === x.getName());
             }
         }
 

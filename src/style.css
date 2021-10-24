@@ -53,18 +53,18 @@ body {
     height: 30px;
     border: none;
     background-color: white;
+    cursor: pointer;
 }
 .projects-title {
     margin-top: 20px;
 }
 
-.projects-list {
+.project-list {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: stretch;
-    text-align: center;
-    height: 30px;
+    gap: 40px;
 }
 .project-button {
     padding: 5px 10px;
@@ -72,10 +72,12 @@ body {
     height: 30px;
     border: none;
     background-color: white;
+    cursor: pointer;
 }
-.add-project-button {
+.button-add-project {
     background-color: skyblue;
     height: 30px;
+    cursor: pointer;
 }
 .content {
     min-height: 50%;
@@ -106,6 +108,10 @@ body {
     justify-content: flex-end;
     gap: 5px;
 }
+.task:hover,
+.button-add-task:hover {
+    background-color: lightgray;
+}
 .task-name {
     /* Positioning */
     flex: 1;
@@ -114,17 +120,61 @@ body {
     /* Design */
     text-overflow: ellipsis;
     overflow: hidden;
+    cursor: pointer;
 }
 
-.edit-button,
-.remove-button,
-.completed-button {
+.button-edit-task,
+.button-remove-task,
+.button-complete-task {
     height: 100%;
     aspect-ratio: 1;
     border: none;
     cursor: pointer;
 }
 
-.completed-button {
+.button-complete-task {
     background: none;
+}
+.button-add-task {
+    display: flex;
+    background-color: inherit;
+    border: none;
+    cursor: pointer;
+    height: 40px;
+    padding: 10px;
+    width: 60%;
+    text-align: left;
+    gap: 5px;
+}
+.add-task-popup {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    gap: 5px;
+}
+.add-task-popup-input {
+    background-color: white;
+    height: 40px;
+    border: none;
+}
+.add-task-popup-buttons {
+    display: flex;
+    height: 40px;
+    justify-content: space-between;
+}
+.add-task-popup-add,
+.add-task-popup-cancel {
+    border: none;
+    width: 50%;
+    cursor: pointer;
+}
+.add-task-popup-add {
+    background-color: lightgreen;
+}
+.add-task-popup-cancel {
+    background-color: lightcoral;
+}
+
+.active {
+    visibility: visible;
 }

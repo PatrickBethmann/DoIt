@@ -26,13 +26,9 @@ export default class Project {
      * @returns NEw tasks Array
      */
     removeTask(x) {
-        console.log("task removed");
-        console.log(typeof x);
-
         if (typeof x === "string") {
             this.tasks = this.tasks.filter((task) => task.getName() !== x);
         } else if (typeof x === "number") {
-            console.log("removed by number");
             this.tasks.splice(x, 1);
         } else if (typeof x === "object") {
             if (x instanceof Task) {
@@ -59,10 +55,8 @@ export default class Project {
 
     getTask(x) {
         if (typeof x === "string") {
-            console.log("getting task by string");
             return this.tasks.find((task) => task.getName() === x);
         } else if (typeof x === "number") {
-            console.log("getting task by number");
             if (x > -1) {
                 return this.tasks[x];
             }
