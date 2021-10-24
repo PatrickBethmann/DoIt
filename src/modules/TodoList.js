@@ -12,14 +12,14 @@ export default class TodoList {
     }
 
     addProject(newProject) {
-        // Check if Project already exists
-        if (this.projects.find((project) => project.getName() === newProject.getName())) {
-            return;
-        }
-
         // Check if a name has been given
         if (newProject.getName() === undefined) {
             newProject.setName(this.getDefaultProjectName());
+        }
+
+        // Check if Project already exists
+        if (this.projects.find((project) => project.getName() === newProject.getName())) {
+            return;
         }
 
         this.projects.push(newProject);

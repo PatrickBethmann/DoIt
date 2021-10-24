@@ -26,9 +26,8 @@ body {
 }
 
 .nav {
-    position: fixed;
+    position: absolute;
     left: 0;
-    bottom: 0;
     top: 100px;
     background-color: rgb(173, 224, 255);
 
@@ -50,7 +49,7 @@ body {
 .default-projects-button {
     padding: 5px 10px;
     text-align: left;
-    height: 30px;
+    height: 40px;
     border: none;
     background-color: white;
     cursor: pointer;
@@ -69,10 +68,25 @@ body {
 .project-button {
     padding: 5px 10px;
     text-align: left;
-    height: 30px;
+    height: 40px;
     border: none;
     background-color: white;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.add-project-button {
+    border: none;
+    height: 40px;
+    background-color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+.button-delete-project {
+    height: 100%;
+    aspect-ratio: 1;
+    z-index: 1;
 }
 .button-add-project {
     background-color: skyblue;

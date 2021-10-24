@@ -13,6 +13,7 @@ export default class UI {
     static loadHomepage() {
         UI.loadProjects();
         UI.initDefaultProjects();
+        UI.initAddProjectButton();
         UI.openProject("Home");
     }
     static initDefaultProjects() {
@@ -27,12 +28,16 @@ export default class UI {
         this.projectList.innerHTML = "";
         const todoList = Storage.getTodoList();
         todoList.getProjects().forEach((project) => {
-            UI.addProject(project);
+            if (project.getName() !== "Home" && project.getName() !== "Today" && project.getName() !== "This Week") {
+                UI.addProject(project);
+            }
         });
-
+    }
+    static initAddProjectButton() {
         const addProjectButton = document.querySelector(".add-project-button");
         addProjectButton.addEventListener("click", () => {
             Storage.addProject(new Project());
+            console.log(Storage.getTodoList().getProjects());
             this.loadProjects();
         });
     }
@@ -43,6 +48,17 @@ export default class UI {
         container.addEventListener("click", () => {
             this.openProject(project);
         });
+
+        const deleteButton = document.createElement("button");
+        deleteButton.addEventListener("click", (e) => {
+            e.stopPropagation();
+            Storage.removeProject(container.textContent);
+            this.loadProjects();
+        });
+        deleteButton.textContent = "";
+        deleteButton.classList.add("button-delete-project");
+
+        container.appendChild(deleteButton);
 
         this.projectList.appendChild(container);
     }
