@@ -33,14 +33,7 @@ export default class UI {
             }
         });
     }
-    static initAddProjectButton() {
-        const addProjectButton = document.querySelector(".add-project-button");
-        addProjectButton.addEventListener("click", () => {
-            Storage.addProject(new Project());
-            console.log(Storage.getTodoList().getProjects());
-            this.loadProjects();
-        });
-    }
+
     static addProject(project) {
         const container = document.createElement("button");
         container.textContent = project.getName();
@@ -55,7 +48,9 @@ export default class UI {
             Storage.removeProject(container.textContent);
             this.loadProjects();
         });
-        deleteButton.textContent = "";
+        deleteButton.innerHTML = `<span class="material-icons">
+        clear
+        </span>`;
         deleteButton.classList.add("button-delete-project");
 
         container.appendChild(deleteButton);
@@ -66,12 +61,25 @@ export default class UI {
         const container = document.createElement("div");
         container.classList.add("task");
         container.setAttribute("taskname", task.getName());
-        const deleteButton = document.createElement("button");
-        deleteButton.textContent = "X";
-        deleteButton.classList.add("button-remove-task");
 
-        container.innerHTML = `<button class="button-complete-task" data-completed="false">O</button><h3 class="task-name">${task.getName()}</h3><button class="button-edit-task">O</button>`;
-        container.appendChild(deleteButton);
+        const taskName = document.createElement("h3");
+        taskName.textContent = task.getName();
+        taskName.classList.add("task-name");
+
+        const buttonCompleteTask = document.createElement("button");
+        buttonCompleteTask.classList.add("button-complete-task");
+        buttonCompleteTask.innerHTML = `<span class="material-icons">radio_button_unchecked</span>`;
+        buttonCompleteTask.setAttribute("data-completed", "false");
+
+        const buttonEditTask = document.createElement("button");
+        buttonEditTask.classList.add("button-edit-task");
+        buttonEditTask.innerHTML = `<span class="material-icons">edit</span>`;
+
+        const buttonRemoveTask = document.createElement("button");
+        buttonRemoveTask.classList.add("button-remove-task");
+        buttonRemoveTask.innerHTML = `<span class="material-icons">clear</span>`;
+
+        container.append(buttonCompleteTask, taskName, buttonEditTask, buttonRemoveTask);
         this.content.appendChild(container);
     }
     static openProject(projectName) {
@@ -95,10 +103,11 @@ export default class UI {
         this.content.appendChild(this.getAddTaskButton());
         this.initTaskButtons(project);
     }
+
     static getAddTaskButton() {
         const addTaskButton = document.createElement("button");
         addTaskButton.classList.add("button-add-task");
-        addTaskButton.innerHTML = `<i class="button-add-task-icon">O</i> <h3 button-add-task-title>Add Task</h3> `;
+        addTaskButton.innerHTML = `<i class="button-add-task-icon"><span class="material-icons">add</span></i> <h3 button-add-task-title>Add Task</h3> `;
         addTaskButton.addEventListener("click", () => {
             console.log("adding task");
             UI.openAddTaskPopup();
@@ -157,10 +166,10 @@ export default class UI {
             });
             completedButtons[i].addEventListener("click", () => {
                 if (completedButtons[i].getAttribute("data-completed") === "false") {
-                    completedButtons[i].textContent = "^^";
+                    completedButtons[i].innerHTML = `<span class="material-icons">check_circle_outline</span>`;
                     completedButtons[i].setAttribute("data-completed", "true");
                 } else {
-                    completedButtons[i].textContent = "O";
+                    completedButtons[i].innerHTML = `<span class="material-icons">radio_button_unchecked</span>`;
                     completedButtons[i].setAttribute("data-completed", "false");
                 }
             });
@@ -173,5 +182,13 @@ export default class UI {
     static closeAddTaskPopup() {
         document.querySelector(".add-task-popup").remove();
         this.content.append(this.getAddTaskButton());
+    }
+    static initAddProjectButton() {
+        const addProjectButton = document.querySelector(".add-project-button");
+        addProjectButton.addEventListener("click", () => {
+            Storage.addProject(new Project());
+            console.log(Storage.getTodoList().getProjects());
+            this.loadProjects();
+        });
     }
 }
