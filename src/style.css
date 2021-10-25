@@ -8,10 +8,15 @@
     box-sizing: border-box;
 }
 body {
+    background-color: white;
+}
+main {
+    height: fit-content;
 }
 
 .header {
     position: fixed;
+    z-index: 1;
     top: 0;
     left: 0;
     right: 0;
@@ -26,9 +31,11 @@ body {
 }
 
 .nav {
+    overflow-y: auto;
     position: absolute;
-    left: 0;
     top: 100px;
+    float: left;
+    bottom: 0;
     background-color: rgb(173, 224, 255);
 
     width: 200px;
@@ -36,7 +43,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: start;
-    gap: 20px;
+    gap: 10px;
     padding: 20px;
 }
 .default-projects {
@@ -53,11 +60,19 @@ body {
     border: none;
     background-color: white;
     cursor: pointer;
+    border-radius: 10px;
+    border: 2px solid gray;
 }
 .projects-title {
     margin-top: 20px;
+    margin-bottom: 10px;
+    text-decoration: underline;
 }
 
+.project-button:hover,
+.default-projects-button:hover {
+    background-color: lightsalmon;
+}
 .project-list {
     display: flex;
     flex-direction: column;
@@ -71,18 +86,23 @@ body {
     height: 40px;
     border: none;
     background-color: white;
+    border-radius: 10px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border: 2px solid gray;
 }
 .add-project-button {
-    border: none;
-    height: 40px;
+    border: 2px solid black;
     background-color: white;
+    height: 40px;
     font-size: 20px;
     font-weight: bold;
+    border-radius: 10px;
+    margin-top: 20px;
 }
+
 .button-delete-project {
     height: 100%;
     aspect-ratio: 1;
@@ -97,16 +117,10 @@ body {
 .button-delete-project:hover {
     background-color: lightcoral;
 }
-.button-add-project {
-    background-color: skyblue;
-    height: 30px;
-    cursor: pointer;
-}
 .content {
-    min-height: 50%;
     min-width: 50%;
     width: calc(100vw - 200px);
-    height: auto;
+    height: fit-content;
     position: absolute;
     left: 200px;
     top: 100px;
@@ -118,8 +132,6 @@ body {
     gap: 30px;
     justify-content: flex-start;
     align-items: center;
-
-    background-color: aliceblue;
 }
 .task {
     background-color: white;
@@ -130,6 +142,7 @@ body {
     align-items: center;
     justify-content: flex-end;
     gap: 5px;
+    border-radius: 10px;
 }
 .task:hover,
 .button-add-task:hover {
@@ -153,6 +166,7 @@ body {
     aspect-ratio: 1;
     border: none;
     cursor: pointer;
+    border-radius: 5px;
 }
 
 .button-complete-task {
@@ -169,34 +183,50 @@ body {
     width: 60%;
     text-align: left;
     gap: 5px;
+    border-radius: 10px;
 }
-.add-task-popup {
+.add-task-popup,
+.add-project-popup {
     display: flex;
     flex-direction: column;
     width: 60%;
     gap: 5px;
 }
-.add-task-popup-input {
+.add-task-popup-input,
+.add-project-popup-input {
     background-color: white;
     height: 40px;
     border: none;
+    padding: 10px;
+    border-radius: 10px;
 }
-.add-task-popup-buttons {
+.add-task-popup-buttons,
+.add-project-popup-buttons {
     display: flex;
     height: 40px;
     justify-content: space-between;
+    gap: 5px;
 }
 .add-task-popup-add,
-.add-task-popup-cancel {
+.add-task-popup-cancel,
+.add-project-popup-add,
+.add-project-popup-cancel {
     border: none;
     width: 50%;
     cursor: pointer;
+    border-radius: 10px;
 }
-.add-task-popup-add {
+.add-task-popup-add,
+.add-project-popup-add {
     background-color: lightgreen;
 }
-.add-task-popup-cancel {
+.add-task-popup-cancel,
+.add-project-popup-cancel {
     background-color: lightcoral;
+}
+.add-project-popup {
+    width: 100%;
+    border-radius: 10px;
 }
 
 .active {

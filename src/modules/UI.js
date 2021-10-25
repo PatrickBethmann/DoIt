@@ -45,12 +45,10 @@ export default class UI {
         const deleteButton = document.createElement("button");
         deleteButton.addEventListener("click", (e) => {
             e.stopPropagation();
-            Storage.removeProject(container.textContent);
+            Storage.removeProject(project.getName());
             this.loadProjects();
         });
-        deleteButton.innerHTML = `<span class="material-icons">
-        clear
-        </span>`;
+        deleteButton.innerHTML = `<span class="material-icons">clear</span>`;
         deleteButton.classList.add("button-delete-project");
 
         container.appendChild(deleteButton);
@@ -165,6 +163,11 @@ export default class UI {
                 console.log("Editing task " + project.getTask(i).getName());
             });
             completedButtons[i].addEventListener("click", () => {
+                /* This can be used to delete completed task when checked
+                Storage.removeTask(project, project.getTask(i).getName());
+                UI.openProject(project);
+                */
+
                 if (completedButtons[i].getAttribute("data-completed") === "false") {
                     completedButtons[i].innerHTML = `<span class="material-icons">check_circle_outline</span>`;
                     completedButtons[i].setAttribute("data-completed", "true");
@@ -186,9 +189,65 @@ export default class UI {
     static initAddProjectButton() {
         const addProjectButton = document.querySelector(".add-project-button");
         addProjectButton.addEventListener("click", () => {
-            Storage.addProject(new Project());
-            console.log(Storage.getTodoList().getProjects());
-            this.loadProjects();
+            //Storage.addProject(new Project());
+            //console.log(Storage.getTodoList().getProjects());
+            //this.loadProjects();
+            this.openAddProjectPopup();
         });
+    }
+    static getAddProjectPopup() {
+        const popup = document.createElement("div");
+        popup.classList.add("add-project-popup");
+
+        const textInput = document.createElement("input");
+        textInput.setAttribute("type", "text");
+        textInput.classList.add("add-project-popup-input");
+
+        const buttons = document.createElement("div");
+        buttons.classList.add("add-project-popup-buttons");
+
+        const buttonAdd = document.createElement("button");
+        buttonAdd.textContent = "Add";
+        buttonAdd.classList.add("add-project-popup-add");
+        buttons.appendChild(buttonAdd);
+        buttonAdd.addEventListener("click", () => {
+            const input = document.querySelector(".add-project-popup-input");
+            console.log("hi" + input.value + "hi");
+            const newProject = new Project(input.value);
+            Storage.addProject(newProject); // Saves new Project
+            this.addProject(newProject); // Displays new Project
+
+            this.closeAddProjectPopup(); // closes the popup
+            this.openProject(newProject);
+        });
+
+        const buttonCancel = document.createElement("button");
+        buttonCancel.textContent = "Cancel";
+        buttonCancel.classList.add("add-project-popup-cancel");
+        buttons.appendChild(buttonCancel);
+        buttonCancel.addEventListener("click", () => {
+            this.closeAddProjectPopup();
+        });
+
+        popup.append(textInput, buttons);
+
+        return popup;
+    }
+    static openAddProjectPopup() {
+        const addProjectButton = document.querySelector(".add-project-button");
+        addProjectButton.remove();
+
+        const nav = document.querySelector("nav");
+        nav.appendChild(this.getAddProjectPopup());
+    }
+    static closeAddProjectPopup() {
+        document.querySelector(".add-project-popup").remove();
+
+        const addProjectButton = document.createElement("button");
+        addProjectButton.classList.add("add-project-button");
+        addProjectButton.innerHTML = `<h3>Add Project</h3>`;
+
+        document.querySelector("nav").appendChild(addProjectButton);
+        this.initAddProjectButton();
     }
 }

@@ -13,7 +13,7 @@ export default class TodoList {
 
     addProject(newProject) {
         // Check if a name has been given
-        if (newProject.getName() === undefined) {
+        if (newProject.getName() === undefined || newProject.getName() === "") {
             newProject.setName(this.getDefaultProjectName());
         }
 
@@ -55,6 +55,13 @@ export default class TodoList {
         }
 
         return;
+    }
+
+    setToday() {
+        // not available
+    }
+    setWeekly() {
+        // not available
     }
 
     getDefaultProjectName() {
