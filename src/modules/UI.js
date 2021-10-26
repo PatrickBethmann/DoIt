@@ -69,15 +69,32 @@ export default class UI {
         buttonCompleteTask.innerHTML = `<span class="material-icons">radio_button_unchecked</span>`;
         buttonCompleteTask.setAttribute("data-completed", "false");
 
-        const buttonEditTask = document.createElement("button");
-        buttonEditTask.classList.add("button-edit-task");
-        buttonEditTask.innerHTML = `<span class="material-icons">edit</span>`;
+        //const buttonEditTask = document.createElement("button");
+        //buttonEditTask.classList.add("button-edit-task");
+        //buttonEditTask.innerHTML = `<span class="material-icons">edit</span>`;
+        const dueDate = document.createElement("p");
+        dueDate.textContent = "No Date";
+        dueDate.classList.add("due-date");
+        dueDate.addEventListener("click", () => {
+            dueDateInput.hidden = false;
+            dueDate.hidden = true;
+        });
+
+        const dueDateInput = document.createElement("input");
+        dueDateInput.type = "date";
+        dueDateInput.hidden = true;
+        dueDateInput.classList.add("due-date-input");
+        dueDateInput.addEventListener("change", () => {
+            dueDateInput.hidden = true;
+            dueDate.hidden = false;
+            this.setTaskDate(task, dueDateInput.value);
+        });
 
         const buttonRemoveTask = document.createElement("button");
         buttonRemoveTask.classList.add("button-remove-task");
         buttonRemoveTask.innerHTML = `<span class="material-icons">clear</span>`;
 
-        container.append(buttonCompleteTask, taskName, buttonEditTask, buttonRemoveTask);
+        container.append(buttonCompleteTask, taskName, dueDate, dueDateInput, buttonRemoveTask);
         this.content.appendChild(container);
     }
     static openProject(projectName) {
@@ -159,9 +176,9 @@ export default class UI {
                 Storage.removeTask(project, project.getTask(i).getName());
                 UI.openProject(project);
             });
-            editButtons[i].addEventListener("click", () => {
-                console.log("Editing task " + project.getTask(i).getName());
-            });
+            //editButtons[i].addEventListener("click", () => {
+            //    console.log("Editing task " + project.getTask(i).getName());
+            //});
             completedButtons[i].addEventListener("click", () => {
                 /* This can be used to delete completed task when checked
                 Storage.removeTask(project, project.getTask(i).getName());
@@ -249,5 +266,10 @@ export default class UI {
 
         document.querySelector("nav").appendChild(addProjectButton);
         this.initAddProjectButton();
+    }
+
+    static setTaskDate(task, date) {
+        const currentTask = document.querySelector(`div[taskname="${task.getName()}"]`);
+        dueDate.textContent = new Date().toLocaleDateString("de-DE");
     }
 }

@@ -13,9 +13,12 @@ export default class Project {
             return;
         }
         // Check if a name has been given
-        if (newTask.getName() === undefined) {
-            // if not, set default name
-            newTask.setName(this.getDefaultTaskName());
+        if (newTask.getName() === undefined || newTask.getName().trim().length === 0) {
+            // i decided to not add a new task, since a new task without a name is essentially wortless
+            return;
+
+            // Use this to get default name
+            // newTask.setName(this.getDefaultTaskName());
         }
         this.tasks.push(newTask);
     }

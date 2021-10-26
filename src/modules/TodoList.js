@@ -13,7 +13,7 @@ export default class TodoList {
 
     addProject(newProject) {
         // Check if a name has been given
-        if (newProject.getName() === undefined || newProject.getName() === "") {
+        if (newProject.getName() === undefined || newProject.getName().trim().length === 0) {
             newProject.setName(this.getDefaultProjectName());
         }
 
