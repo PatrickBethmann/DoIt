@@ -2,233 +2,236 @@
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  box-sizing: border-box;
 }
 body {
-    background-color: white;
+  background-color: white;
 }
 main {
-    height: fit-content;
+  height: fit-content;
 }
 
 .header {
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 100px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    background-color: lightskyblue;
-    color: white;
+  background-color: lightskyblue;
+  color: white;
 }
 
 .nav {
-    overflow-y: auto;
-    position: absolute;
-    top: 100px;
-    float: left;
-    bottom: 0;
-    background-color: rgb(173, 224, 255);
+  overflow-y: auto;
+  position: absolute;
+  top: 100px;
+  float: left;
+  bottom: 0;
+  background-color: rgb(173, 224, 255);
 
-    width: 200px;
+  width: 200px;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    gap: 10px;
-    padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 10px;
+  padding: 20px;
 }
 .default-projects {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: stretch;
-    gap: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: stretch;
+  gap: 40px;
 }
 .default-projects-button {
-    padding: 5px 10px;
-    text-align: left;
-    height: 40px;
-    border: none;
-    background-color: white;
-    cursor: pointer;
-    border-radius: 10px;
-    border: 2px solid gray;
+  padding: 5px 10px;
+  text-align: left;
+  height: 40px;
+  border: none;
+  background-color: white;
+  cursor: pointer;
+  border-radius: 10px;
+  border: 2px solid gray;
 }
 .projects-title {
-    margin-top: 20px;
-    margin-bottom: 10px;
-    text-decoration: underline;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  text-decoration: underline;
 }
 
 .project-button:hover,
 .default-projects-button:hover {
-    background-color: lightsalmon;
+  background-color: lightsalmon;
 }
 .project-list {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: stretch;
-    gap: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 40px;
 }
 .project-button {
-    padding: 5px 10px;
-    text-align: left;
-    height: 40px;
-    border: none;
-    background-color: white;
-    border-radius: 10px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border: 2px solid gray;
+  padding: 5px 10px;
+  text-align: left;
+  height: 40px;
+  border: none;
+  background-color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid gray;
 }
 .add-project-button {
-    border: 2px solid black;
-    background-color: white;
-    height: 40px;
-    font-size: 20px;
-    font-weight: bold;
-    border-radius: 10px;
-    margin-top: 20px;
+  border: 2px solid black;
+  background-color: white;
+  height: 40px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 10px;
+  margin-top: 20px;
 }
 
 .button-delete-project {
-    height: 100%;
-    aspect-ratio: 1;
-    z-index: 1;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  height: 100%;
+  aspect-ratio: 1;
+  z-index: 1;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .button-delete-project:hover {
-    background-color: lightcoral;
+  background-color: lightcoral;
 }
 .content {
-    min-width: 50%;
-    width: calc(100vw - 200px);
-    height: fit-content;
-    position: absolute;
-    left: 200px;
-    top: 100px;
+  min-width: 50%;
+  width: calc(100vw - 200px);
+  height: fit-content;
+  position: absolute;
+  left: 200px;
+  top: 100px;
 
-    padding: 100px;
+  padding: 100px;
 
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    justify-content: flex-start;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  justify-content: flex-start;
+  align-items: center;
 }
 .task {
-    background-color: white;
-    width: 60%;
-    height: 40px;
-    padding: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 5px;
-    border-radius: 10px;
+  background-color: white;
+  width: 60%;
+  height: 40px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 5px;
+  border-radius: 10px;
 }
 .task:hover,
 .button-add-task:hover {
-    background-color: lightgray;
+  background-color: lightgray;
 }
 .task-name {
-    /* Positioning */
-    flex: 1;
-    margin-right: auto;
+  /* Positioning */
+  flex: 1;
+  margin-right: auto;
 
-    /* Design */
-    text-overflow: ellipsis;
-    overflow: hidden;
-    cursor: pointer;
+  /* Design */
+  text-overflow: ellipsis;
+  overflow: hidden;
+  cursor: pointer;
 }
 
 .button-edit-task,
 .button-remove-task,
 .button-complete-task {
-    height: 100%;
-    aspect-ratio: 1;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
+  height: 100%;
+  aspect-ratio: 1;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.due-date {
+  cursor: pointer;
 }
 
 .button-complete-task {
-    background: none;
+  background: none;
 }
 .button-add-task {
-    display: flex;
-    align-items: center;
-    background-color: inherit;
-    border: none;
-    cursor: pointer;
-    height: 40px;
-    padding: 5px;
-    width: 60%;
-    text-align: left;
-    gap: 5px;
-    border-radius: 10px;
+  display: flex;
+  align-items: center;
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
+  height: 40px;
+  padding: 5px;
+  width: 60%;
+  text-align: left;
+  gap: 5px;
+  border-radius: 10px;
 }
 .add-task-popup,
 .add-project-popup {
-    display: flex;
-    flex-direction: column;
-    width: 60%;
-    gap: 5px;
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  gap: 5px;
 }
 .add-task-popup-input,
 .add-project-popup-input {
-    background-color: white;
-    height: 40px;
-    border: none;
-    padding: 10px;
-    border-radius: 10px;
+  background-color: white;
+  height: 40px;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
 }
 .add-task-popup-buttons,
 .add-project-popup-buttons {
-    display: flex;
-    height: 40px;
-    justify-content: space-between;
-    gap: 5px;
+  display: flex;
+  height: 40px;
+  justify-content: space-between;
+  gap: 5px;
 }
 .add-task-popup-add,
 .add-task-popup-cancel,
 .add-project-popup-add,
 .add-project-popup-cancel {
-    border: none;
-    width: 50%;
-    cursor: pointer;
-    border-radius: 10px;
+  border: none;
+  width: 50%;
+  cursor: pointer;
+  border-radius: 10px;
 }
 .add-task-popup-add,
 .add-project-popup-add {
-    background-color: lightgreen;
+  background-color: lightgreen;
 }
 .add-task-popup-cancel,
 .add-project-popup-cancel {
-    background-color: lightcoral;
+  background-color: lightcoral;
 }
 .add-project-popup {
-    width: 100%;
-    border-radius: 10px;
+  width: 100%;
+  border-radius: 10px;
 }
 
 .active {
-    visibility: visible;
+  visibility: visible;
 }
